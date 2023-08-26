@@ -19,7 +19,7 @@ jobs:
         with:
           ref: gh-pages
           path: gh-pages
-      - uses:  simple-elf/allure-report-action@main
+      - uses:  simple-elf/allure-report-action@master
         if: always()
         with:
           gh_pages: gh-pages
@@ -32,5 +32,3 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-
-
