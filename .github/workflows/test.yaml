@@ -21,8 +21,6 @@ jobs:
           allure_report: allure-report
           allure_history: allure-history
       - uses: peaceiris/actions-gh-pages@v3
-        if: always()
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PT }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
