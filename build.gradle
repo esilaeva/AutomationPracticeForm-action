@@ -7,6 +7,8 @@ repositories {
     mavenCentral()
 }
 
+def allureVersion = '2.23.0'
+
 group 'guru.qa'
 version '1.0'
 
@@ -14,7 +16,7 @@ allure {
     report {
         //отвечает за появление папочки build/allure-results
         //версия Allure Report (https://github.com/allure-framework/allure2)
-        version.set('2.23.0')
+        version.set(allureVersion)
     }
     adapter {
         //обработка аннотации @Step
@@ -24,7 +26,7 @@ allure {
             junit5 {
                 //версия интеграции фреймворка и Allure
                 //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
-                adapterVersion.set('2.23.0')
+                adapterVersion.set(allureVersion)
             }
         }
     }
@@ -36,11 +38,17 @@ dependencies {
             'com.github.javafaker:javafaker:1.0.2',
             'org.junit.jupiter:junit-jupiter:5.9.3',
             'org.slf4j:slf4j-simple:2.0.7',
-            'io.qameta.allure:allure-selenide:2.23.0',
+            'io.qameta.allure:allure-selenide:2.23.0'
     )
 }
 
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
+}
+
+task simple_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("simple")
+    }
 }
